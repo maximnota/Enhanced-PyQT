@@ -28,13 +28,15 @@ class BasicWindow():
         win.hide()
 
 class CustomWindow():
-    def __init__(self, height, width, title, text, textSize, Alignment):
+    def __init__(self, height, width, title, text, textSize, Alignment, RadioGroupBoxName, RadioGroupBoxPosition):
         self.height = height
         self.width = width
         self.title = title
         self.text = text
         self.Alignment = Alignment
         self.textSize = textSize
+        self.RadioGroupBoxName = RadioGroupBoxName
+        self.RadioGroupBoxPosition = RadioGroupBoxPosition
     
     def printInfo(self):
         print("Title: ", self.title)
@@ -45,6 +47,7 @@ class CustomWindow():
     def create(self):
         app = QApplication([])
 
+        global v_line
         v_line = QVBoxLayout()
 
         global CustomWin
@@ -55,7 +58,13 @@ class CustomWindow():
         global Text
         Text = QLabel()
         Text.setText(self.text)
-        Text.resize(self.textSize, self.textSize)
+        font = Text.font()
+        font.setPointSize(self.textSize)
+        Text.setFont(font) 
+
+        if self.RadioGroupBoxName != "N/A" and self.RadioGroupBoxPosition == 0:
+            Box = QGroupBox(self.RadioGroupBoxName)
+            v_line.addWidget(Box)
 
         if self.Alignment == "Center":
             print("Center Alignment")
@@ -97,9 +106,14 @@ class CustomWindow():
             print("Left-bottom Alignment")
             v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
+        if self.RadioGroupBoxName != "N/A" and self.RadioGroupBoxPosition == 1:
+            Box = QGroupBox(self.RadioGroupBoxName)
+            v_line.addWidget(Box)
+
         CustomWin.setLayout(v_line)
         
         CustomWin.show()
 
         app.exec_()
         app.setActiveWindow()
+    
