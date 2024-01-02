@@ -28,14 +28,13 @@ class BasicWindow():
         win.hide()
 
 class CustomWindow():
-    def __init__(self, height, width, title, text, textHeight, textWidth, Alignment):
+    def __init__(self, height, width, title, text, textSize, Alignment):
         self.height = height
         self.width = width
         self.title = title
         self.text = text
-        self.textHeight = textHeight
-        self.textWidth = textWidth
         self.Alignment = Alignment
+        self.textSize = textSize
     
     def printInfo(self):
         print("Title: ", self.title)
@@ -47,13 +46,6 @@ class CustomWindow():
         app = QApplication([])
 
         v_line = QVBoxLayout()
-        v1_line = QVBoxLayout()
-        v2_line = QVBoxLayout()
-        v3_line = QVBoxLayout()
-
-        h_line = QHBoxLayout2()
-        h1_line = QHBoxLayout()
-        h2_line QHBoxLayout()
 
         global CustomWin
         CustomWin = QWidget()
@@ -63,14 +55,47 @@ class CustomWindow():
         global Text
         Text = QLabel()
         Text.setText(self.text)
-        Text.resize(self.textHeight, self.textWidth)
+        Text.resize(self.textSize, self.textSize)
 
         if self.Alignment == "Center":
+            print("Center Alignment")
             v_line.addWidget(Text, alignment=Qt.AlignCenter)
-        if self.Alignment == "None":
-            v_line.addWidget(Text)
-        if self.Alignment == "Right-top":
 
+        elif self.Alignment == "None":
+            print("No Alignment")
+            v_line.addWidget(Text)
+
+        elif self.Alignment == "Right-top":
+            print("Right-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
+
+        elif self.Alignment == "Right-bottom":
+            print("Right-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignBottom)
+
+        elif self.Alignment == "Right-center":
+            print("Right-center Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignHCenter)
+
+        elif self.Alignment == "Center-top":
+            print("Center-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignTop)
+
+        elif self.Alignment == "Center-bottom":
+            print("Center-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+
+        elif self.Alignment == "Left-top":
+            print("Left-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignTop)
+
+        elif self.Alignment == "Left-center":
+            print("Left-center Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignHCenter)
+
+        elif self.Alignment == "Left-bottom":
+            print("Left-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
         CustomWin.setLayout(v_line)
         
