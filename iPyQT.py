@@ -67,11 +67,13 @@ class CustomWindow():
         self.Box = QGroupBox(RadioGroupBoxName)
         v_line.addWidget(self.Box)
 
-    def addChoiceButton(self, buttonName):
+    def addChoiceButton(self, buttonName, function):
         Button = QRadioButton(buttonName)
         self.ChoiceButtons.append(Button)
         h_line.addWidget(Button)
         self.Box.setLayout(h_line)
+        Button.clicked.connect(function) 
+
     
     def addButton(self, buttonName, function):
         Button = QPushButton(buttonName)
