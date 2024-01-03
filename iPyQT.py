@@ -28,7 +28,7 @@ class BasicWindow():
         win.hide()
 
 class CustomWindow():
-    def __init__(self, height, width, title, text, textSize, Alignment, RadioGroupBoxName, RadioGroupBoxPosition):
+    def __init__(self, height, width, title, text, textSize, Alignment, RadioGroupBoxName):
         self.height = height
         self.width = width
         self.title = title
@@ -36,7 +36,6 @@ class CustomWindow():
         self.Alignment = Alignment
         self.textSize = textSize
         self.RadioGroupBoxName = RadioGroupBoxName
-        self.RadioGroupBoxPosition = RadioGroupBoxPosition
     
     def printInfo(self):
         print("Title: ", self.title)
@@ -44,7 +43,16 @@ class CustomWindow():
         print("Width: ", self.width)
         print("Text: ", self.text)
 
+    def addChoiceButton(self, buttonName):
+        Buttons = []
+        h_line = QHBoxLayout()
+        Button = QRadioButton(buttonName)
+        Buttons.append(Button)
+        h_line.addWidget(Button)
+        Box.setLayout(h_line)
+
     def create(self):
+        global app
         app = QApplication([])
 
         global v_line
@@ -62,9 +70,7 @@ class CustomWindow():
         font.setPointSize(self.textSize)
         Text.setFont(font) 
 
-        if self.RadioGroupBoxName != "N/A" and self.RadioGroupBoxPosition == 0:
-            Box = QGroupBox(self.RadioGroupBoxName)
-            v_line.addWidget(Box)
+
 
         if self.Alignment == "Center":
             print("Center Alignment")
@@ -106,14 +112,15 @@ class CustomWindow():
             print("Left-bottom Alignment")
             v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
-        if self.RadioGroupBoxName != "N/A" and self.RadioGroupBoxPosition == 1:
+        if self.RadioGroupBoxName != "N/A":
+            global Box
             Box = QGroupBox(self.RadioGroupBoxName)
             v_line.addWidget(Box)
 
         CustomWin.setLayout(v_line)
         
         CustomWin.show()
+        app.setActiveWindow(CustomWin)
 
+    def init(self):
         app.exec_()
-        app.setActiveWindow()
-    
