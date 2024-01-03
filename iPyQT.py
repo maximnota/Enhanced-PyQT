@@ -14,7 +14,7 @@ class BasicWindow():
     
     def create(self):
         app = QApplication([])
-
+    
         global win
         win = QWidget()
         win.setWindowTitle(self.title)
@@ -23,6 +23,7 @@ class BasicWindow():
 
         app.exec_()
         app.setActiveWindow()
+    
 
     def hide(self):
         win.hide()
@@ -177,6 +178,9 @@ class CustomWindow():
 
     def getTextFieldValue(self):
         return textBox.text()
+    
+    def Hide(self):
+        CustomWin.hide()
 
     def init(self):
         app.exec_()

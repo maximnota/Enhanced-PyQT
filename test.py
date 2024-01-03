@@ -1,6 +1,6 @@
 from iPyQT import *
 
-# Window = BasicWindow(50, 50, "Title")
+# Window = BasicWindow(250, 250, "Title")
 # Window.create()
 
 def smthRandom():
