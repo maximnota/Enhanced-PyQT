@@ -130,5 +130,53 @@ class CustomWindow():
             print("Left-bottom Alignment")
             v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
+    def addTextField(self, height, width, Alignment):
+        global textBox
+        textBox = QLineEdit()
+        textBox.resize(height, width)
+        
+        if Alignment == "Center":
+            print("Center Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignCenter)
+
+        elif Alignment == "None":
+            print("No Alignment")
+            v_line.addWidget(Text)
+
+        elif Alignment == "Right-top":
+            print("Right-top Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignTop)
+
+        elif Alignment == "Right-bottom":
+            print("Right-bottom Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignBottom)
+
+        elif Alignment == "Right-center":
+            print("Right-center Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignHCenter)
+
+        elif Alignment == "Center-top":
+            print("Center-top Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignTop)
+
+        elif Alignment == "Center-bottom":
+            print("Center-bottom Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+
+        elif Alignment == "Left-top":
+            print("Left-top Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignTop)
+
+        elif Alignment == "Left-center":
+            print("Left-center Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignHCenter)
+
+        elif Alignment == "Left-bottom":
+            print("Left-bottom Alignment")
+            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignBottom)
+
+    def getTextFieldValue(self):
+        return textBox.text()
+
     def init(self):
         app.exec_()
