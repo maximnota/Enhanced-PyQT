@@ -28,33 +28,28 @@ class BasicWindow():
         win.hide()
 
 class CustomWindow():
-    def __init__(self, height, width, title, text, textSize, Alignment, RadioGroupBoxName):
+    def __init__(self, height, width, title):
         self.height = height
         self.width = width
         self.title = title
-        self.text = text
-        self.Alignment = Alignment
-        self.textSize = textSize
-        self.RadioGroupBoxName = RadioGroupBoxName
+        self.ChoiceButtons = []
+        self.Buttons = []
+        self.Box = None
+        self.Text = None
     
     def printInfo(self):
         print("Title: ", self.title)
         print("Height: ", self.height)
         print("Width: ", self.width)
-        print("Text: ", self.text)
+        print("Text: ", self.Text)
 
-    def addChoiceButton(self, buttonName):
-        Buttons = []
-        h_line = QHBoxLayout()
-        Button = QRadioButton(buttonName)
-        Buttons.append(Button)
-        h_line.addWidget(Button)
-        Box.setLayout(h_line)
 
     def create(self):
         global app
         app = QApplication([])
 
+        global h_line
+        h_line = QHBoxLayout()
         global v_line
         v_line = QVBoxLayout()
 
@@ -63,64 +58,75 @@ class CustomWindow():
         CustomWin.setWindowTitle(self.title)
         CustomWin.resize(self.height, self.width)
 
-        global Text
-        Text = QLabel()
-        Text.setText(self.text)
-        font = Text.font()
-        font.setPointSize(self.textSize)
-        Text.setFont(font) 
-
-
-
-        if self.Alignment == "Center":
-            print("Center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignCenter)
-
-        elif self.Alignment == "None":
-            print("No Alignment")
-            v_line.addWidget(Text)
-
-        elif self.Alignment == "Right-top":
-            print("Right-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
-
-        elif self.Alignment == "Right-bottom":
-            print("Right-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignBottom)
-
-        elif self.Alignment == "Right-center":
-            print("Right-center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignHCenter)
-
-        elif self.Alignment == "Center-top":
-            print("Center-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignTop)
-
-        elif self.Alignment == "Center-bottom":
-            print("Center-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignBottom)
-
-        elif self.Alignment == "Left-top":
-            print("Left-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignTop)
-
-        elif self.Alignment == "Left-center":
-            print("Left-center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignHCenter)
-
-        elif self.Alignment == "Left-bottom":
-            print("Left-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
-
-        if self.RadioGroupBoxName != "N/A":
-            global Box
-            Box = QGroupBox(self.RadioGroupBoxName)
-            v_line.addWidget(Box)
-
         CustomWin.setLayout(v_line)
         
         CustomWin.show()
         app.setActiveWindow(CustomWin)
+
+    def createRadioGroupBox(self, RadioGroupBoxName):
+        self.Box = QGroupBox(RadioGroupBoxName)
+        v_line.addWidget(self.Box)
+
+    def addChoiceButton(self, buttonName):
+        Button = QRadioButton(buttonName)
+        self.ChoiceButtons.append(Button)
+        h_line.addWidget(Button)
+        self.Box.setLayout(h_line)
+    
+    def addButton(self, buttonName, function):
+        Button = QPushButton(buttonName)
+        self.Buttons.append(Button)
+        v_line.addWidget(Button)
+        Button.clicked.connect(function)
+
+    
+    
+    def addText(self, text, textSize, Alignment):
+        Text = QLabel()
+        Text.setText(text)
+        font = Text.font()
+        font.setPointSize(textSize)
+        Text.setFont(font) 
+    
+        if Alignment == "Center":
+            print("Center Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignCenter)
+
+        elif Alignment == "None":
+            print("No Alignment")
+            v_line.addWidget(Text)
+
+        elif Alignment == "Right-top":
+            print("Right-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
+
+        elif Alignment == "Right-bottom":
+            print("Right-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignBottom)
+
+        elif Alignment == "Right-center":
+            print("Right-center Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignHCenter)
+
+        elif Alignment == "Center-top":
+            print("Center-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignTop)
+
+        elif Alignment == "Center-bottom":
+            print("Center-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+
+        elif Alignment == "Left-top":
+            print("Left-top Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignTop)
+
+        elif Alignment == "Left-center":
+            print("Left-center Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignHCenter)
+
+        elif Alignment == "Left-bottom":
+            print("Left-bottom Alignment")
+            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
     def init(self):
         app.exec_()
