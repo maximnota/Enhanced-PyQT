@@ -21,6 +21,7 @@ text1 = CustomWindow.addText("Text", 50, "Right-top")
 text2 = CustomWindow.addText("Text 2", 25, "Left-bottom")
 button1 = CustomWindow.addButton("Button", smthRandom)
 TextField = CustomWindow.addTextField(30, 40, "Center")
+CustomWindow.changeColor()
 CustomWindow.printInfo()
 CustomWindow.init()
 

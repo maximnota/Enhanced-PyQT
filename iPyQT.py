@@ -46,6 +46,7 @@ class CustomWindow():
         print("Text: ", self.Text)
 
 
+
     def create(self):
         global app
         app = QApplication([])
@@ -64,6 +65,7 @@ class CustomWindow():
         
         CustomWin.show()
         app.setActiveWindow(CustomWin)
+
 
     def createRadioGroupBox(self, RadioGroupBoxName):
         self.Box = QGroupBox(RadioGroupBoxName)
