@@ -34,6 +34,7 @@ class CustomWindow():
         self.TextFields = []
         self.Texts = []
         self.RadioGroupBoxes = []
+        self.BoxLayouts = []
 
     def printInfo(self):
         print("Title: ", self.title)
@@ -114,6 +115,7 @@ class CustomWindow():
         Text.setFont(font) 
         self.Texts.append(Text)
         i = 0
+
 
         for txt in self.Texts:
             if txt == Text:
@@ -262,9 +264,11 @@ class CustomWindow():
 
     def changeText(self, ID, Text):
         self.Texts[ID].setText(Text)
+
+
     
 
-
+    #To Fix
     def move(self, new_x, new_y, objectID, objectType):
         match objectType:
             case "Text":
