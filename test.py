@@ -7,7 +7,7 @@ def smthRandom():
     print("Hello")
 def jerry():
     print("Jerry has been clicked upon")
-    textFieldValue = CustomWindow.getTextFieldValue()
+    textFieldValue = CustomWindow.getTextFieldValue(TextField)
     print(textFieldValue)
 def bob():
     print("Bob Has been clicked upon")

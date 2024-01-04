@@ -37,6 +37,7 @@ class CustomWindow():
         self.Buttons = []
         self.Box = None
         self.Text = None
+        self.TextFields = []
     
     def printInfo(self):
         print("Title: ", self.title)
@@ -135,6 +136,8 @@ class CustomWindow():
         global textBox
         textBox = QLineEdit()
         textBox.resize(height, width)
+        textBoxID = len(self.TextFields)
+        self.TextFields.append(textBox)
         
         if Alignment == "Center":
             print("Center Alignment")
@@ -176,8 +179,10 @@ class CustomWindow():
             print("Left-bottom Alignment")
             v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
-    def getTextFieldValue(self):
-        return textBox.text()
+        return textBoxID
+
+    def getTextFieldValue(self, ID):
+        return self.TextFields[ID].text()
     
     def Hide(self):
         CustomWin.hide()
