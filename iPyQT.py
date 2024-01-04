@@ -25,10 +25,6 @@ class BasicWindow():
         app.exec_()
         app.setActiveWindow()
     
-
-    def hide(self):
-        win.hide()
-
 class CustomWindow():
     def __init__(self, height, width, title):
         self.height = height
@@ -67,11 +63,18 @@ class CustomWindow():
         app.setActiveWindow(CustomWin)
 
 
-    def createRadioGroupBox(self, RadioGroupBoxName):
+    def addRadioGroupBox(self, RadioGroupBoxName):
         global Box
         Box = QGroupBox(RadioGroupBoxName)
         self.RadioGroupBoxes.append(Box)
         v_line.addWidget(Box)
+        i = 0
+        for box in self.RadioGroupBoxes:
+            if box == Box:
+                RadioGroupBoxID = i
+                break
+            i += 1
+        return RadioGroupBoxID
 
     def addChoiceButton(self, buttonName, function):
         Button = QRadioButton(buttonName)
@@ -79,6 +82,13 @@ class CustomWindow():
         h_line.addWidget(Button)
         Box.setLayout(h_line)
         Button.clicked.connect(function) 
+        i = 0
+        for cbutton in self.ChoiceButtons:
+            if cbutton == Button:
+                ChoiceButtonID = i
+                break
+            i += 1
+        return ChoiceButtonID
 
     
     def addButton(self, buttonName, function):
@@ -86,6 +96,14 @@ class CustomWindow():
         self.Buttons.append(Button)
         v_line.addWidget(Button)
         Button.clicked.connect(function)
+        i = 0
+        for button in self.Buttons:
+            if button == Button:
+                ButtonID = i
+                break
+            i += 1
+
+        return ButtonID
 
     
     
@@ -96,6 +114,13 @@ class CustomWindow():
         font.setPointSize(textSize)
         Text.setFont(font) 
         self.Texts.append(Text)
+        i = 0
+
+        for txt in self.Texts:
+            if txt == Text:
+                TextID = i
+                break
+            i += 1
 
         match Alignment:
             case "Center":
@@ -128,13 +153,20 @@ class CustomWindow():
             case "Left-bottom":
                 print("Left-bottom Alignment")
                 v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
+        return TextID
 
     def addTextField(self, height, width, Alignment):
         global textBox
         textBox = QLineEdit()
         textBox.resize(height, width)
-        textBoxID = len(self.TextFields)
         self.TextFields.append(textBox)
+        a = 0
+
+        for field in self.TextFields:
+            if field == textBox:
+                textBoxID = a
+                break
+            a += 1
         
         match Alignment:
             case "Center":
@@ -183,9 +215,9 @@ class CustomWindow():
             Button.hide()
         for cButton in self.ChoiceButtons:
             cButton.hide()
-        for radioGroupBox in RadioGroupBoxes:
+        for radioGroupBox in self.RadioGroupBoxes:
             radioGroupBox.hide()
-        for textField in TextFields:
+        for textField in self.TextFields:
             textField.hide()
         
     
@@ -197,11 +229,36 @@ class CustomWindow():
             Button.show()
         for cButton in self.ChoiceButtons:
             cButton.show()
-        for radioGroupBox in RadioGroupBoxes:
+        for radioGroupBox in self.RadioGroupBoxes:
             radioGroupBox.show()
-        for textField in TextFields:
+        for textField in self.TextFields:
             textField.show()       
-        11
+    
+    def HideObject(self, objectType, objectID):
+        match objectType:
+            case "Text":
+                self.Texts[objectID].hide()
+            case "Button":
+                self.Buttons[objectID].hide()
+            case "ChoiceButton":
+                self.ChoiceButtons[objectID].hide()
+            case "textField":
+                self.TextFields[objectID].hide()
+            case "RadioGroupBox":
+                self.RadioGroupBoxes[objectID].hide()
+
+    def ShowObject(self, objectType, objectID):
+        match objectType:
+            case "Text":
+                self.Texts[objectID].show()
+            case "Button":
+                self.Buttons[objectID].show()
+            case "ChoiceButton":
+                self.ChoiceButtons[objectID].show()
+            case "textField":
+                self.TextFields[objectID].show()
+            case "RadioGroupBox":
+                self.RadioGroupBoxes[objectID].show()
 
     def init(self):
         app.exec_()

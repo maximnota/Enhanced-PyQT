@@ -19,13 +19,14 @@ def bob():
 
 Ben = CustomWindow(300, 350, "Title of Application")
 Ben.create()
-Ben.createRadioGroupBox("Test")
+Ben.addRadioGroupBox("Test")
 jerry = Ben.addChoiceButton("Jerry", jerry)
 bob = Ben.addChoiceButton("Bob", bob)
-text1 = Ben.addText("Text", 50, "Right-top")
+text1 = Ben.addText("Bannana", 50, "Right-top")
 text2 = Ben.addText("Text 2", 25, "Left-bottom")
 button1 = Ben.addButton("Button", smthRandom)
 TextField = Ben.addTextField(30, 40, "Center")
+Ben.HideObject("Text", text1)
 Ben.printInfo()
 Ben.init()
 
