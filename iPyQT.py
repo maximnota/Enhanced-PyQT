@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
+import sys
 
 class BasicWindow():
     def __init__(self, height, width, title):
@@ -35,15 +36,14 @@ class CustomWindow():
         self.title = title
         self.ChoiceButtons = []
         self.Buttons = []
-        self.Box = None
-        self.Text = None
         self.TextFields = []
-    
+        self.Texts = []
+        self.RadioGroupBoxes = []
+
     def printInfo(self):
         print("Title: ", self.title)
         print("Height: ", self.height)
         print("Width: ", self.width)
-        print("Text: ", self.Text)
 
 
 
@@ -68,14 +68,16 @@ class CustomWindow():
 
 
     def createRadioGroupBox(self, RadioGroupBoxName):
-        self.Box = QGroupBox(RadioGroupBoxName)
-        v_line.addWidget(self.Box)
+        global Box
+        Box = QGroupBox(RadioGroupBoxName)
+        self.RadioGroupBoxes.append(Box)
+        v_line.addWidget(Box)
 
     def addChoiceButton(self, buttonName, function):
         Button = QRadioButton(buttonName)
         self.ChoiceButtons.append(Button)
         h_line.addWidget(Button)
-        self.Box.setLayout(h_line)
+        Box.setLayout(h_line)
         Button.clicked.connect(function) 
 
     
@@ -93,46 +95,39 @@ class CustomWindow():
         font = Text.font()
         font.setPointSize(textSize)
         Text.setFont(font) 
-    
-        if Alignment == "Center":
-            print("Center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignCenter)
+        self.Texts.append(Text)
 
-        elif Alignment == "None":
-            print("No Alignment")
-            v_line.addWidget(Text)
-
-        elif Alignment == "Right-top":
-            print("Right-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
-
-        elif Alignment == "Right-bottom":
-            print("Right-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignBottom)
-
-        elif Alignment == "Right-center":
-            print("Right-center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignHCenter)
-
-        elif Alignment == "Center-top":
-            print("Center-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignTop)
-
-        elif Alignment == "Center-bottom":
-            print("Center-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignBottom)
-
-        elif Alignment == "Left-top":
-            print("Left-top Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignTop)
-
-        elif Alignment == "Left-center":
-            print("Left-center Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignHCenter)
-
-        elif Alignment == "Left-bottom":
-            print("Left-bottom Alignment")
-            v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
+        match Alignment:
+            case "Center":
+                print("Center Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignCenter)
+            case "None":
+                print("No Alignment")
+                v_line.addWidget(Text)                
+            case "Right-top":
+                print("Right-top Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
+            case "Right-bottom":
+                print("Right-bottom Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignBottom)
+            case "Right-center":
+                print("Right-center Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignHCenter)
+            case "Center-top":
+                print("Center-top Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignTop)
+            case "Center-bottom":
+                print("Center-bottom Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+            case "Left-top":
+                print("Left-top Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignTop)
+            case "Left-center":
+                print("Left-center Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignHCenter)
+            case "Left-bottom":
+                print("Left-bottom Alignment")
+                v_line.addWidget(Text, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
     def addTextField(self, height, width, Alignment):
         global textBox
@@ -141,53 +136,72 @@ class CustomWindow():
         textBoxID = len(self.TextFields)
         self.TextFields.append(textBox)
         
-        if Alignment == "Center":
-            print("Center Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignCenter)
-
-        elif Alignment == "None":
-            print("No Alignment")
-            v_line.addWidget(Text)
-
-        elif Alignment == "Right-top":
-            print("Right-top Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignTop)
-
-        elif Alignment == "Right-bottom":
-            print("Right-bottom Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignBottom)
-
-        elif Alignment == "Right-center":
-            print("Right-center Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignHCenter)
-
-        elif Alignment == "Center-top":
-            print("Center-top Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignTop)
-
-        elif Alignment == "Center-bottom":
-            print("Center-bottom Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignBottom)
-
-        elif Alignment == "Left-top":
-            print("Left-top Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignTop)
-
-        elif Alignment == "Left-center":
-            print("Left-center Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignHCenter)
-
-        elif Alignment == "Left-bottom":
-            print("Left-bottom Alignment")
-            v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignBottom)
+        match Alignment:
+            case "Center":
+                print("Center Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignCenter)
+            case "None":
+                print("No Alignment")
+                v_line.addWidget(textBox)                
+            case "Right-top":
+                print("Right-top Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignTop)
+            case "Right-bottom":
+                print("Right-bottom Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignBottom)
+            case "Right-center":
+                print("Right-center Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignRight | Qt.AlignHCenter)
+            case "Center-top":
+                print("Center-top Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignTop)
+            case "Center-bottom":
+                print("Center-bottom Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignHCenter | Qt.AlignBottom)
+            case "Left-top":
+                print("Left-top Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignTop)
+            case "Left-center":
+                print("Left-center Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignHCenter)
+            case "Left-bottom":
+                print("Left-bottom Alignment")
+                v_line.addWidget(textBox, alignment=Qt.AlignLeft | Qt.AlignBottom)
 
         return textBoxID
 
     def getTextFieldValue(self, ID):
         return self.TextFields[ID].text()
     
-    def Hide(self):
-        CustomWin.hide()
+
+
+    def HideAll(self):  
+        print("Hide All")
+        for Text in self.Texts:
+            Text.hide()
+        for Button in self.Buttons:
+            Button.hide()
+        for cButton in self.ChoiceButtons:
+            cButton.hide()
+        for radioGroupBox in RadioGroupBoxes:
+            radioGroupBox.hide()
+        for textField in TextFields:
+            textField.hide()
+        
+    
+    def ShowAll(self):
+        print("Show all")
+        for Text in self.Texts:
+            Text.show()
+        for Button in self.Buttons:
+            Button.show()
+        for cButton in self.ChoiceButtons:
+            cButton.show()
+        for radioGroupBox in RadioGroupBoxes:
+            radioGroupBox.show()
+        for textField in TextFields:
+            textField.show()       
+        11
 
     def init(self):
         app.exec_()

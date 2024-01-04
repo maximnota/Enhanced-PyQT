@@ -5,23 +5,27 @@ from iPyQT import *
 
 def smthRandom():
     print("Hello")
+
+
+
 def jerry():
     print("Jerry has been clicked upon")
-    textFieldValue = CustomWindow.getTextFieldValue(TextField)
+    textFieldValue = Ben.getTextFieldValue(TextField)
     print(textFieldValue)
+    
+
 def bob():
     print("Bob Has been clicked upon")
 
-CustomWindow = CustomWindow(300, 350, "Title of Application")
-CustomWindow.create()
-CustomWindow.createRadioGroupBox("Test")
-jerry = CustomWindow.addChoiceButton("Jerry", jerry)
-bob = CustomWindow.addChoiceButton("Bob", bob)
-text1 = CustomWindow.addText("Text", 50, "Right-top")
-text2 = CustomWindow.addText("Text 2", 25, "Left-bottom")
-button1 = CustomWindow.addButton("Button", smthRandom)
-TextField = CustomWindow.addTextField(30, 40, "Center")
-CustomWindow.changeColor()
-CustomWindow.printInfo()
-CustomWindow.init()
+Ben = CustomWindow(300, 350, "Title of Application")
+Ben.create()
+Ben.createRadioGroupBox("Test")
+jerry = Ben.addChoiceButton("Jerry", jerry)
+bob = Ben.addChoiceButton("Bob", bob)
+text1 = Ben.addText("Text", 50, "Right-top")
+text2 = Ben.addText("Text 2", 25, "Left-bottom")
+button1 = Ben.addButton("Button", smthRandom)
+TextField = Ben.addTextField(30, 40, "Center")
+Ben.printInfo()
+Ben.init()
 
