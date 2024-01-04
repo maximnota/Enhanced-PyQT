@@ -258,6 +258,19 @@ class CustomWindow():
                 self.TextFields[objectID].show()
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].show()
+    
+    def move(self, new_x, new_y, objectID, objectType):
+        match objectType:
+            case "Text":
+                self.Texts[objectID].move(new_x, new_y)
+            case "Button":
+                self.Buttons[objectID].move(new_x, new_y)
+            case "ChoiceButton":
+                self.ChoiceButtons[objectID].move(new_x, new_y)
+            case "textField":
+                self.TextFields[objectID].move(new_x, new_y)
+            case "RadioGroupBox":
+                self.RadioGroupBoxes[objectID].move(new_x, new_y)       
 
     def init(self):
         app.exec_()
