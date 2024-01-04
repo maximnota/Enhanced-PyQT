@@ -259,6 +259,12 @@ class CustomWindow():
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].show()
     
+
+    def changeText(self, ID, Text):
+        self.Texts[ID].setText(Text)
+    
+
+
     def move(self, new_x, new_y, objectID, objectType):
         match objectType:
             case "Text":
