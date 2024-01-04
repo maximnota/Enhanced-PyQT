@@ -5,7 +5,5 @@ from iPyQT import *
 Ben = CustomWindow(300, 350, "Title of Application")
 Ben.create()
 text2 = Ben.addText("Text 2", 25, "None")
-Ben.move(100, 100, text2, "Text")
 Ben.printInfo()
 Ben.init()
-
