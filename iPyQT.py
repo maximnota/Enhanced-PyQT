@@ -328,10 +328,6 @@ class CustomWindow():
         match objectType:
             case "Text":
                 self.Texts[ID].setStyleSheet(b)
-            case "Button":
-                self.Buttons[ID].setStyleSheet(b)
-            case "ChoiceButton":
-                self.ChoiceButtons[ID].setStyleSheet(b)
             case "TextField":
                 self.TextFields[ID].setStyleSheet(b)
 
