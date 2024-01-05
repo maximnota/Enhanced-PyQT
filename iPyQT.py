@@ -133,7 +133,7 @@ class CustomWindow():
                 v_line.addWidget(Text, alignment=Qt.AlignCenter)
             case "None":
                 print("No Alignment")
-                v_line.addWidget(Text)                
+                v_line.addWidget(Text)
             case "Right-top":
                 print("Right-top Alignment")
                 v_line.addWidget(Text, alignment=Qt.AlignRight | Qt.AlignTop)
@@ -362,17 +362,29 @@ class CustomWindow():
 
     #To Fix
     def move(self, new_x, new_y, objectID, objectType):
+        print("Checking type")
         match objectType:
             case "Text":
-                self.Texts[objectID].move(new_x, new_y)
+                label = self.Texts[objectID]
+                widget_layout = v_line
+                widget_layout.removeWidget(label)    
+                widget_layout.addWidget(label, alignment=Qt.AlignLeft | Qt.AlignTop)
+                widget_layout.setContentsMargins(new_x, new_y, 0, 0)  # Set new position      
+                widget_layout.update()
             case "Button":
-                self.Buttons[objectID].move(new_x, new_y)
-            case "ChoiceButton":
-                self.ChoiceButtons[objectID].move(new_x, new_y)
-            case "textField":
-                self.TextFields[objectID].move(new_x, new_y)
-            case "RadioGroupBox":
-                self.RadioGroupBoxes[objectID].move(new_x, new_y)       
+                button = self.Buttons[objectID]
+                widget_layout = v_line
+                widget_layout.removeWidget(button)    
+                widget_layout.addWidget(button, alignment=Qt.AlignLeft | Qt.AlignTop)
+                widget_layout.setContentsMargins(new_x, new_y, 0, 0)  # Set new position      
+                widget_layout.update()
+            case "TextField":
+                textField = self.TextFields[objectID]
+                widget_layout = v_line
+                widget_layout.removeWidget(textField)    
+                widget_layout.addWidget(textField, alignment=Qt.AlignLeft | Qt.AlignTop)
+                widget_layout.setContentsMargins(new_x, new_y, 0, 0)  # Set new position      
+                widget_layout.update()
             case "Image":
                 self.Images[objectID].move(new_x, new_y)
 
