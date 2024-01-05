@@ -28,7 +28,7 @@ The **CustomWindow** application provides a customizable window using PyQt5, all
 1. Clone the repository using the following command:
 
     ```bash
-    git clone https://github.com/yourusername/CustomWindow.git
+    git clone https://github.com/maximnota/Enhanced-PyQT.git
     ```
 
 2. Install the required dependencies:
