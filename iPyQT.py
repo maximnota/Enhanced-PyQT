@@ -266,7 +266,17 @@ class CustomWindow():
         self.Texts[ID].setText(Text)
 
 
-    
+    def changeFont(self, objectType, ID, customFont, Size):
+        match objectType:
+            case "Text":
+                self.Texts[ID].setFont(customFont, Size)
+            case "Button":
+                self.Buttons[ID].setFont(customFont, Size)
+            case "ChoiceButton":
+                self.ChoiceButtons[ID].setFont(customFont, Size)
+            case "TextField":
+                self.TextFields[ID].setFont(customFont, Size)
+            
 
     #To Fix
     def move(self, new_x, new_y, objectID, objectType):
