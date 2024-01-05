@@ -78,6 +78,7 @@ window.init()
 - `changeText(ID, Text)`: Changes the text of a widget.
 - `changeFont(objectType, ID, customFont, Size)`: Changes the font of a widget.
 - `move(new_x, new_y, objectID, objectType)`: Moves a widget to a new position.
+- `changeColor(objectType, ID, color)`: Changes the color of a widget
 - `init()`: Initializes and runs the application.
   ### `BasicWindow` Class
 
