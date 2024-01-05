@@ -354,6 +354,12 @@ class CustomWindow():
         b = a + color
         CustomWin.setStyleSheet(b)
 
+    def changeImage(self, objectID, image_path, width, height):
+        image = QPixmap(image_path)
+        Image = QLabel()
+        Image.setPixmap(image)
+        Image.resize(width, height)
+
     #To Fix
     def move(self, new_x, new_y, objectID, objectType):
         match objectType:
