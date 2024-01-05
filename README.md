@@ -1,4 +1,4 @@
-# CustomWindow Application
+# Enhanced PyQT
 
 This application is built using PyQt5 to create a customizable window with various widgets and functionalities.
 
