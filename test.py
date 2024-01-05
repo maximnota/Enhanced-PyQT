@@ -5,7 +5,8 @@ from iPyQT import *
 Ben = CustomWindow(300, 350, "Title of Application")
 Ben.create()
 text2 = Ben.addText("Text 2", 25, "Center")
-Ben.changeTextColor(text2, "red")
+Ben.changeTextColor(text2, "white")
+Ben.changeWindowColor("lightgreen")
 Ben.printInfo()
 Ben.init()
 

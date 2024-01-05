@@ -282,7 +282,11 @@ class CustomWindow():
         a = "color: "
         b = a + color
         self.Texts[ID].setStyleSheet(b)
-
+    
+    def changeWindowColor(self, color):
+        a = "background-color: "
+        b = a + color
+        CustomWin.setStyleSheet(b)
 
     #To Fix
     def move(self, new_x, new_y, objectID, objectType):
