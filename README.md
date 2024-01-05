@@ -81,6 +81,7 @@ window.init()
 - `addImage(image_path, width, height)`: creates an image
 - `changeImage(objectID, image_path, width, height)`: changes the image value of an image widget
 - `changeColor(objectType, ID, color)`: Changes the color of a widget
+- `addTextBorder(objectID, thickness, style, color)`: creates a border for a text label
 - `init()`: Initializes and runs the application.
   ### `BasicWindow` Class
 
