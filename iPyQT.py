@@ -1,6 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QPixmap
+
 
 class BasicWindow():
     def __init__(self, height, width, title):
@@ -36,6 +38,7 @@ class CustomWindow():
         self.Texts = []
         self.RadioGroupBoxes = []
         self.BoxLayouts = []
+        self.Images = []
 
     def printInfo(self):
         print("Title: ", self.title)
@@ -296,7 +299,20 @@ class CustomWindow():
         self.Texts[objectID].setStyleSheet(f"border: {border_style};")
 
 
-
+    def addImage(self, image_path):
+        image = QPixmap(image_path)
+        Image = QLabel()
+        Image.setPixmap(image)
+        Image.resize(image.width(), image.height())
+        v_line.addWidget(Image)
+        self.Images.append(Image)
+        i = 0
+        for picture in self.Images:
+            if picture == Image:
+                ImageID = i
+                break
+            i += 1
+        return ImageID
     
     def changeBackgroundColor(self, objectType, ID, color):
         a = "background-color: "
