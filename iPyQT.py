@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont
 
 class BasicWindow():
     def __init__(self, height, width, title):
@@ -34,6 +35,7 @@ class CustomWindow():
         self.TextFields = []
         self.Texts = []
         self.RadioGroupBoxes = []
+        self.BoxLayouts = []
 
     def printInfo(self):
         print("Title: ", self.title)
@@ -114,6 +116,7 @@ class CustomWindow():
         Text.setFont(font) 
         self.Texts.append(Text)
         i = 0
+
 
         for txt in self.Texts:
             if txt == Text:
@@ -259,6 +262,29 @@ class CustomWindow():
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].show()
     
+
+    def changeText(self, ID, Text):
+        self.Texts[ID].setText(Text)
+
+
+    def changeFont(self, objectType, ID, customFont, Size):
+        match objectType:
+            case "Text":
+                self.Texts[ID].setFont(customFont, Size)
+            case "Button":
+                self.Buttons[ID].setFont(customFont, Size)
+            case "ChoiceButton":
+                self.ChoiceButtons[ID].setFont(customFont, Size)
+            case "TextField":
+                self.TextFields[ID].setFont(customFont, Size)
+            
+    def changeTextColor(self, ID, color):
+        a = "color: "
+        b = a + color
+        self.Texts[ID].setStyleSheet(b)
+
+
+    #To Fix
     def move(self, new_x, new_y, objectID, objectType):
         match objectType:
             case "Text":
