@@ -9,4 +9,5 @@ Ben.create()
 text2 = Ben.addText("Text 2", 50, "None")
 Ben.move(50, 5, text2, "Text")
 Ben.printInfo()
-Ben.init()
+Ben.init() 
+#E
