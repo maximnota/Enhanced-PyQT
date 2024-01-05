@@ -302,7 +302,7 @@ class CustomWindow():
             case "TextField":
                 self.TextFields[ID].setStyleSheet(b)
 
-    def addTextBorder(self, objectType, objectID, thickness, style, color):
+    def addTextBorder(self, objectID, thickness, style, color):
         border_style = f"{thickness}px {style} {color}"
         self.Texts[objectID].setStyleSheet(f"border: {border_style};")
 
