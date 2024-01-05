@@ -1,6 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QPixmap
+
 
 class BasicWindow():
     def __init__(self, height, width, title):
@@ -36,6 +38,7 @@ class CustomWindow():
         self.Texts = []
         self.RadioGroupBoxes = []
         self.BoxLayouts = []
+        self.Images = []
 
     def printInfo(self):
         print("Title: ", self.title)
@@ -221,6 +224,8 @@ class CustomWindow():
             radioGroupBox.hide()
         for textField in self.TextFields:
             textField.hide()
+        for image in self.Images:
+            image.hide()
         
     
     def ShowAll(self):
@@ -235,6 +240,8 @@ class CustomWindow():
             radioGroupBox.show()
         for textField in self.TextFields:
             textField.show()       
+        for image in self.Images:
+            image.show()
     
     def HideObject(self, objectType, objectID):
         match objectType:
@@ -248,6 +255,8 @@ class CustomWindow():
                 self.TextFields[objectID].hide()
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].hide()
+            case "Image":
+                self.Images[objectID].hide()
 
     def ShowObject(self, objectType, objectID):
         match objectType:
@@ -261,6 +270,8 @@ class CustomWindow():
                 self.TextFields[objectID].show()
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].show()
+            case "Image":
+                self.Images[objectID].show()
     
 
     def changeText(self, ID, Text):
@@ -296,7 +307,20 @@ class CustomWindow():
         self.Texts[objectID].setStyleSheet(f"border: {border_style};")
 
 
-
+    def addImage(self, image_path, width, height):
+        image = QPixmap(image_path)
+        Image = QLabel()
+        Image.setPixmap(image)
+        Image.resize(width, height)
+        v_line.addWidget(Image)
+        self.Images.append(Image)
+        i = 0
+        for picture in self.Images:
+            if picture == Image:
+                ImageID = i
+                break
+            i += 1
+        return ImageID
     
     def changeBackgroundColor(self, objectType, ID, color):
         a = "background-color: "
@@ -311,10 +335,30 @@ class CustomWindow():
             case "TextField":
                 self.TextFields[ID].setStyleSheet(b)
 
+    def resizeObject(self, objectType, objectID, new_x, new_y):
+        match objectType:
+            case "Text":
+                self.Texts[objectID].resize(new_x, new_y)
+            case "Button":
+                self.Buttons[objectID].resize(new_x, new_y)
+            case "ChoiceButton":
+                self.ChoiceButtons[objectID].resize(new_x, new_y)
+            case "TextField":
+                self.TextFields[objectID].resize(new_x, new_y)
+            case "Image":
+                self.Images[objectID].resize(new_x, new_y)
+            
+
     def changeWindowColor(self, color):
         a = "background-color: "
         b = a + color
         CustomWin.setStyleSheet(b)
+
+    def changeImage(self, objectID, image_path, width, height):
+        image = QPixmap(image_path)
+        Image = QLabel()
+        self.Images[objectID].setPixmap(image)
+        self.Images[objectID].resize(width, height)
 
     #To Fix
     def move(self, new_x, new_y, objectID, objectType):
@@ -329,6 +373,8 @@ class CustomWindow():
                 self.TextFields[objectID].move(new_x, new_y)
             case "RadioGroupBox":
                 self.RadioGroupBoxes[objectID].move(new_x, new_y)       
+            case "Image":
+                self.Images[objectID].move(new_x, new_y)
 
     def init(self):
         app.exec_()
