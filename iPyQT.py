@@ -313,6 +313,3 @@ class CustomWindow():
 
     def init(self):
         app.exec_()
-
-    def init(self):
-        app.exec_()
