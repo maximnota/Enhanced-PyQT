@@ -352,7 +352,6 @@ class CustomWindow():
 
     def changeImage(self, objectID, image_path, width, height):
         image = QPixmap(image_path)
-        Image = QLabel()
         self.Images[objectID].setPixmap(image)
         self.Images[objectID].resize(width, height)
 
