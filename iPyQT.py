@@ -302,7 +302,7 @@ class CustomWindow():
             case "TextField":
                 self.TextFields[ID].setStyleSheet(b)
 
-    def addTextBorder(self, objectType, objectID, thickness, style, color):
+    def addTextBorder(self, objectID, thickness, style, color):
         border_style = f"{thickness}px {style} {color}"
         self.Texts[objectID].setStyleSheet(f"border: {border_style};")
 
@@ -360,7 +360,7 @@ class CustomWindow():
         self.Images[objectID].setPixmap(image)
         self.Images[objectID].resize(width, height)
 
-    #To Fix
+    
     def move(self, new_x, new_y, objectID, objectType):
         print("Checking type")
         match objectType:
