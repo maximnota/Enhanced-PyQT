@@ -10,7 +10,6 @@ This application is built using PyQt5 to create a customizable window with vario
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
