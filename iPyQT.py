@@ -299,11 +299,11 @@ class CustomWindow():
         self.Texts[objectID].setStyleSheet(f"border: {border_style};")
 
 
-    def addImage(self, image_path):
+    def addImage(self, image_path, width, height):
         image = QPixmap(image_path)
         Image = QLabel()
         Image.setPixmap(image)
-        Image.resize(image.width(), image.height())
+        Image.resize(width, height)
         v_line.addWidget(Image)
         self.Images.append(Image)
         i = 0
