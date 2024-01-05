@@ -278,10 +278,19 @@ class CustomWindow():
             case "TextField":
                 self.TextFields[ID].setFont(customFont, Size)
             
-    def changeTextColor(self, ID, color):
+    def changeColor(self, objectType, ID, color):
         a = "color: "
         b = a + color
-        self.Texts[ID].setStyleSheet(b)
+        match objectType:
+            case "Text":
+                self.Texts[ID].setStyleSheet(b)
+            case "Button":
+                self.Buttons[ID].setStyleSheet(b)
+            case "ChoiceButton":
+                self.ChoiceButtons[ID].setStyleSheet(b)
+            case "TextField":
+                self.TextFields[ID].setStyleSheet(b)
+
     
     def changeWindowColor(self, color):
         a = "background-color: "
