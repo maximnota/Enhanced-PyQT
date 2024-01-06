@@ -112,7 +112,7 @@ class CustomWindow():
 
     
     
-    def addText(self, text, textSize, Alignment, opacity):
+    def addText(self, text, textSize, Alignment):
         Text = QLabel()
         Text.setText(text)
         font = Text.font()
