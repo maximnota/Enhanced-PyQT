@@ -111,7 +111,7 @@ class CustomWindow():
 
     
     
-    def addText(self, text, textSize, Alignment):
+    def addText(self, text, textSize, Alignment, opacity):
         Text = QLabel()
         Text.setText(text)
         font = Text.font()
@@ -323,6 +323,9 @@ class CustomWindow():
                 break
             i += 1
         return ImageID
+
+    def changeWindowOpacity(self, newOpacity):
+        CustomWin.setWindowOpacity(newOpacity)
     
     def changeBackgroundColor(self, objectType, ID, color):
         a = "background-color: "
@@ -345,7 +348,7 @@ class CustomWindow():
                 self.TextFields[objectID].resize(new_x, new_y)
             case "Image":
                 self.Images[objectID].resize(new_x, new_y)
-            
+
 
     def changeWindowColor(self, color):
         a = "background-color: "
