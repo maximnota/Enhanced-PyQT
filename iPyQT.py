@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QFont
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QIcon
 
 
 class BasicWindow():
@@ -362,6 +363,10 @@ class CustomWindow():
 
     def changeWindowTitle(self, newTitle):
         CustomWin.setWindowTitle(newTitle)
+
+    def changeWindowIcon(self, icon_path):
+        icon = QIcon(icon_path)
+        CustomWin.setWindowIcon(icon)
 
     
     def move(self, new_x, new_y, objectID, objectType):
