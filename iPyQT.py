@@ -357,6 +357,9 @@ class CustomWindow():
         self.Images[objectID].setPixmap(image)
         self.Images[objectID].resize(width, height)
 
+    def changeWindowTitle(self, newTitle):
+        CustomWin.setWindowTitle(newTitle)
+
     
     def move(self, new_x, new_y, objectID, objectType):
         print("Checking type")
