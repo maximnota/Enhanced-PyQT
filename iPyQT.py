@@ -279,15 +279,17 @@ class CustomWindow():
 
 
     def changeFont(self, objectType, ID, customFont, Size):
+        font = QFont(customFont, Size)
         match objectType:
             case "Text":
-                self.Texts[ID].setFont(customFont, Size)
+                print("Text")
+                self.Texts[ID].setFont(font)
             case "Button":
-                self.Buttons[ID].setFont(customFont, Size)
+                self.Buttons[ID].setFont(font)
             case "ChoiceButton":
-                self.ChoiceButtons[ID].setFont(customFont, Size)
+                self.ChoiceButtons[ID].setFont(font)
             case "TextField":
-                self.TextFields[ID].setFont(customFont, Size)
+                self.TextFields[ID].setFont(font)
             
     def changeColor(self, objectType, ID, color):
         a = "color: "
