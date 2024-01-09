@@ -396,5 +396,8 @@ class CustomWindow():
             case "Image":
                 self.Images[objectID].move(new_x, new_y)
 
+    def changeButtonText(self, objectID, text):
+        self.Buttons[objectID].setText(text)
+
     def init(self):
         app.exec_()
